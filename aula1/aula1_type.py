@@ -1,3 +1,9 @@
+nome = "Paula Martins "
+mes= "Janeiro"
+valor = 500
+desconto = 10
+cupom = "PAULAÉ10"
+
 tipo_nome = type(nome)
 tipo_valor = type(valor)
 tipo_desconto = type(desconto)
