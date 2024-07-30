@@ -1,0 +1,25 @@
+import requests 
+
+squad = {
+    "Andre Alves de Lima" : "11630-067",
+    "Luiz Felipe Alves da Silva" : "11634-060",
+    "Laercio Alexandre de Oliveira" : "11630-135",
+    "Nicolas Galha Lemes" : "11630-065"
+    } # Dicionario com o nome dos integrantes do squad 6 e seus CEPs
+
+resultado = {} 
+
+
+#Loop para pesquisar o CEP de cada integrante e adicionar no dicionario novo sua cidade
+for nome, cep in squad.items(): 
+    response = requests.get(f'https://viacep.com.br/ws/{cep}/json/') #requisicao para pesquisar o cep
+    if response.status_code == 200: 
+        data = response.json() 
+        cidade = data.get("localidade") 
+        resultado[nome] = cidade 
+
+for nome, cidade in resultado.items(): 
+    print(f'A cidade do integrante {nome}, é {cidade}')
+
+with open ("requirements.txt", "w") as f: 
+    f.write("requests\n")
